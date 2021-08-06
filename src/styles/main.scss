@@ -1,0 +1,84 @@
+$chip-text : #fff;
+$chip-bg : lightblue;
+$button-bg : #fff;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#layout{
+    min-height: 100vh;
+    .filter-area{
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+    }
+    .card-area{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+
+        .card{
+            border-radius: 8px;
+            border: solid 1px black;
+            
+            min-height: 100px;
+            margin: 20px;
+            padding: 15px 20px;
+            @media screen and (min-width: 475px){
+                min-width: 450px;
+            }
+            .title{
+                margin-bottom: 10px;
+                font-weight: bold;
+                font-size: 16px;
+                letter-spacing: 2px;
+                @media screen and (min-width: 475px){
+                    font-size: 32px;
+                }
+            }
+            .caterogy{
+                border-radius:8px;
+                background-color: $chip-bg;
+                color: $chip-text;
+                padding: 5px 10px;
+                width: fit-content;
+            }
+            .rating{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 5px;
+                .likes, .dislikes{
+                    
+                    display: flex;
+                    margin-top: 10px;
+                    margin-right: 20px;
+                    margin-bottom: 10px;
+                    svg{
+                        color: #5e5e5e;
+                    }
+                    div{
+                        margin-left: 10px;
+                        font-weight: bold;
+                        color: #5e5e5e;
+                    }
+                }
+            }
+            .actions{
+                display: flex;
+                justify-content: flex-end;
+                
+                button{
+                    letter-spacing: 2px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
