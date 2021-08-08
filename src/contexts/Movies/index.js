@@ -10,13 +10,19 @@ const MovieContextProvider = (props) => {
     const [categories, setCategories] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [moviePerPage] = useState(10);
-    
+    const [moviePerPage, setMoviePerPage] = useState(10);
+    // out of lazyness
+    const [maxPage, setMaxPage] = useState(1);
+
     useEffect(() => {
         initRefMovies();
         resetMovie();
         getCategories();
     }, []);
+
+    useEffect(() => {
+        countingMoviePerPage();
+    }, [moviePerPage])
 
     const initRefMovies = async() => {
         const tmpMovie = await movies$;
@@ -45,6 +51,7 @@ const MovieContextProvider = (props) => {
             await setMovies(filteredMovies);
         }
     }
+
     const deleteInFilter = async (categoryToDelete) => {
         let numberOfCatergory = movies.filter(movie => movie.category === categoryToDelete).length;
         if(numberOfCatergory <= 1){
@@ -62,13 +69,36 @@ const MovieContextProvider = (props) => {
             toast.success(`${movieToDelete.title} has been deleted`);
     }
 
+
+    const countingMoviePerPage = () => {
+        console.log("movie per page has change");
+    }
+
+    const previousPage = () => {
+        if( currentPage > 1 )
+            setCurrentPage(currentPage - 1);
+        console.log(currentPage);
+    }
+
+    const nextPage = () => {
+        console.log(currentPage);
+        console.log(maxPage);
+        if(currentPage <= maxPage)
+            setCurrentPage(currentPage + 1);
+    }
+    
     return(
         <MovieContext.Provider
             value={{
+                /// I'm exposing way to much data , I know :)
                 // Pagination
+                setMaxPage : setMaxPage,
                 setCurrentPage : setCurrentPage,
-                moviePerPage : moviePerPage,
                 currentPage : currentPage,
+                moviePerPage : moviePerPage,
+                setMoviePerPage : setMoviePerPage,
+                previousPage : previousPage,
+                nextPage : nextPage,
                 // Filter
                 categories : categories,
                 getCategories : getCategories,

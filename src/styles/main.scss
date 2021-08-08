@@ -25,40 +25,39 @@ $button-bg : #fff;
 
         .card{
             border-radius: 8px;
-            border: solid 1px black;
+            border: solid 1px #0000001f;
             
-            min-height: 100px;
+            min-width: 100%;
             margin: 20px;
             padding: 15px 20px;
             @media screen and (min-width: 475px){
                 min-width: 450px;
             }
+            &:hover{
+                transition: all .3s linear;
+                -webkit-box-shadow: 2px 2px 17px 0px rgba(75,75,75,0.68); 
+                box-shadow: 2px 2px 17px 0px rgba(75,75,75,0.68);
+            }
             .title{
                 margin-bottom: 10px;
                 font-weight: bold;
-                font-size: 16px;
+                font-size: 24px;
                 letter-spacing: 2px;
                 @media screen and (min-width: 475px){
                     font-size: 32px;
                 }
             }
-            .caterogy{
-                border-radius:8px;
-                background-color: $chip-bg;
-                color: $chip-text;
-                padding: 5px 10px;
-                width: fit-content;
-            }
+            //.caterogy{}
             .rating{
                 display: flex;
+                justify-content: flex-end;
                 flex-direction: row;
                 align-items: center;
                 padding: 5px;
                 .likes, .dislikes{
-                    
                     display: flex;
                     margin-top: 10px;
-                    margin-right: 20px;
+                    margin-left: 20px;
                     margin-bottom: 10px;
                     svg{
                         color: #5e5e5e;
@@ -78,6 +77,16 @@ $button-bg : #fff;
                     letter-spacing: 2px;
                     font-weight: bold;
                 }
+            }
+        }
+    }
+    .filter-area{
+        display: flex;
+        div{
+            display: flex;
+            justify-content: space-around;
+            .button-pagination{
+                margin: 10px;
             }
         }
     }
